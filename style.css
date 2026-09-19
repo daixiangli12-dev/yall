@@ -1,12 +1,12 @@
 @import "tailwindcss";
 
-/* ====== 全局工具样式 ====== */
+/* ====== 全局工具样式（牛油果绿主题） ====== */
 
-/* 自定义滚动条 (匹配粉色主题) */
+/* 自定义滚动条 */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: #fce5e9; }
-::-webkit-scrollbar-thumb { background: #e8a0b4; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #ec4899; }
+::-webkit-scrollbar-track { background: #f4f7f0; }
+::-webkit-scrollbar-thumb { background: #c5dfab; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #8cb868; }
 
 /* 隐藏横向滚动条但保留滚动功能 */
 .no-scrollbar::-webkit-scrollbar { display: none; }

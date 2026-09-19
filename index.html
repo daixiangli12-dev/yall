@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="dist/style.css">
     <style>
         :root {
-            --bg-base: #fce5e9;
-            --border-subtle: rgba(190, 24, 93, 0.1);
-            --accent-gradient: linear-gradient(135deg, #ec4899 0%, #f472b6 50%, #f9a8d4 100%);
-            --card-shadow: 0 2px 10px rgba(190, 24, 93, 0.1), 0 1px 3px rgba(0,0,0,0.06);
-            --card-shadow-hover: 0 12px 32px rgba(190, 24, 93, 0.18), 0 4px 12px rgba(0,0,0,0.06);
+            /* 🥑 牛油果绿主题变量 */
+            --bg-base: #f4f7f0;
+            --border-subtle: rgba(74, 124, 69, 0.1);
+            --accent-gradient: linear-gradient(135deg, #6b9e4d 0%, #8cb868 50%, #b5d69c 100%);
+            --card-shadow: 0 2px 10px rgba(74, 124, 69, 0.08), 0 1px 3px rgba(0,0,0,0.04);
+            --card-shadow-hover: 0 12px 32px rgba(74, 124, 69, 0.15), 0 4px 12px rgba(0,0,0,0.04);
             --breath-duration: 4s;
         }
         body { background-color: var(--bg-base); }
@@ -26,40 +27,40 @@
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-2px); }
         }
-        #accessModal input:focus { border-color: #ec4899 !important; box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.2) !important; }
+        #accessModal input:focus { border-color: #6b9e4d !important; box-shadow: 0 0 0 3px rgba(107, 158, 77, 0.2) !important; }
         #accessLink:hover { filter: brightness(1.05); }
         #verifyBtn:hover { filter: brightness(1.05); }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* ✅ 日期分组标题 - 加深底色和文字 */
+        /* ✅ 日期分组标题 */
         .group-label {
             grid-column: 1 / -1;
             font-size: 0.8rem;
             font-weight: 700;
-            color: #831843;
-            background: linear-gradient(90deg, #f9becf 0%, #f5a0b8 100%);
-            border: 1px solid #e8a0b4;
+            color: #2d4a22;
+            background: linear-gradient(90deg, #dceecf 0%, #c5dfab 100%);
+            border: 1px solid #a8c98a;
             padding: 0.5rem 1rem;
             border-radius: 8px;
             margin: 0.5rem 0 0.25rem;
             letter-spacing: 0.01em;
-            box-shadow: 0 2px 6px rgba(190, 24, 93, 0.12);
+            box-shadow: 0 2px 6px rgba(74, 124, 69, 0.1);
         }
 
-        /* ✅ 分类激活态 - 粉彩渐变 */
+        /* ✅ 分类激活态 - 牛油果渐变 */
         .category-active {
             background: var(--accent-gradient) !important;
             color: #fff !important;
             border-color: transparent !important;
-            box-shadow: 0 2px 10px rgba(236, 72, 153, 0.35) !important;
+            box-shadow: 0 2px 10px rgba(107, 158, 77, 0.35) !important;
         }
 
-        /* ✅ 资源卡片 - 加深边框和阴影 */
+        /* ✅ 资源卡片 */
         .resource-card {
             background: #ffffff;
-            border: 2px solid #e8a0b4;
+            border: 2px solid #c5dfab;
             border-radius: 16px;
             padding: 1.1rem;
             cursor: pointer;
@@ -70,33 +71,31 @@
             animation: breathe var(--breath-duration) ease-in-out infinite;
             animation-delay: calc(var(--i, 0) * 0.15s);
         }
-        /* 卡片顶部粉色光条 */
         .resource-card::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #f9a8d4, #ec4899, #f472b6);
+            background: linear-gradient(90deg, #b5d69c, #6b9e4d, #8cb868);
             opacity: 0;
             transition: opacity 0.35s ease;
             border-radius: 16px 16px 0 0;
         }
-        .resource-card:hover::before {
-            opacity: 1;
-        }
+        .resource-card:hover::before { opacity: 1; }
         .resource-card:hover {
-            border-color: #ec4899;
+            border-color: #6b9e4d;
             box-shadow: var(--card-shadow-hover);
             transform: translateY(-3px);
             animation: none;
         }
         .resource-card h3 {
-            color: #831843;
+            color: #2d4a22;
             font-weight: 600;
             font-size: 0.9rem;
             line-height: 1.45;
         }
-        /* ✅ 高饱和度标签 - 更醒目 */
+
+        /* ✅ 标签色系（牛油果绿为主，搭配自然色调） */
         .card-tag {
             display: inline-block;
             font-size: 0.68rem;
@@ -106,66 +105,57 @@
             letter-spacing: 0.02em;
             transition: all 0.2s ease;
         }
-        .tag-rose    { background: #ec4899; color: #fff; border: 1px solid #db2777; }
-        .tag-pink    { background: #f472b6; color: #fff; border: 1px solid #ec4899; }
-        .tag-amber   { background: #fbbf24; color: #78350f; border: 1px solid #f59e0b; }
-        .tag-sky     { background: #38bdf8; color: #fff; border: 1px solid #0ea5e9; }
-        .tag-lavender{ background: #a78bfa; color: #fff; border: 1px solid #8b5cf6; }
-        .tag-mint    { background: #34d399; color: #fff; border: 1px solid #10b981; }
+        .tag-rose     { background: #6b9e4d; color: #fff; border: 1px solid #4a7c45; }
+        .tag-pink     { background: #8cb868; color: #fff; border: 1px solid #6b9e4d; }
+        .tag-amber    { background: #c9a84c; color: #fff; border: 1px solid #a88b3a; }
+        .tag-sky      { background: #5a9e8f; color: #fff; border: 1px solid #3d7a6b; }
+        .tag-lavender { background: #8a9a7b; color: #fff; border: 1px solid #6b7c5e; }
+        .tag-mint     { background: #a8c98a; color: #2d4a22; border: 1px solid #8cb868; }
 
-        /* ✅ 分页按钮 - 加深文字和边框 */
+        /* ✅ 分页按钮 */
         .page-btn {
             padding: 0.4rem 0.85rem;
             border-radius: 8px;
             font-size: 0.8rem;
             font-weight: 600;
-            border: 1.5px solid #e8a0b4;
-            color: #831843;
+            border: 1.5px solid #c5dfab;
+            color: #2d4a22;
             background: #fff;
             transition: all 0.25s ease;
             cursor: pointer;
         }
         .page-btn:hover:not(:disabled):not(.page-active) {
-            background: #fce7f3;
-            border-color: #ec4899;
-            color: #be185d;
+            background: #edf5e6;
+            border-color: #6b9e4d;
+            color: #4a7c45;
         }
-        .page-btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-        /* ✅ 分页激活态 */
+        .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
         .page-active {
             background: var(--accent-gradient) !important;
             color: #fff !important;
             border-color: transparent !important;
-            box-shadow: 0 2px 10px rgba(236, 72, 153, 0.35);
+            box-shadow: 0 2px 10px rgba(107, 158, 77, 0.35);
         }
 
         /* ✅ 排序按钮非激活态 */
-        .sort-btn-inactive {
-            color: #be185d;
-            font-weight: 600;
-        }
-        .sort-btn-inactive:hover {
-            color: #831843;
-            background: #fce7f3;
-        }
+        .sort-btn-inactive { color: #4a7c45; font-weight: 600; }
+        .sort-btn-inactive:hover { color: #2d4a22; background: #edf5e6; }
 
-        /* ✅ 搜索框 - 加深边框和文字 */
+        /* ✅ 搜索框 */
         #search-input {
             background: #ffffff !important;
-            border: 2px solid #e8a0b4 !important;
-            color: #831843 !important;
+            border: 2px solid #c5dfab !important;
+            color: #2d4a22 !important;
             font-weight: 500 !important;
-            box-shadow: 0 2px 6px rgba(190, 24, 93, 0.06) !important;
+            box-shadow: 0 2px 6px rgba(74, 124, 69, 0.06) !important;
         }
         #search-input:focus {
-            border-color: #ec4899 !important;
-            box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.15), 0 2px 8px rgba(0,0,0,0.04) !important;
+            border-color: #6b9e4d !important;
+            box-shadow: 0 0 0 3px rgba(107, 158, 77, 0.15), 0 2px 8px rgba(0,0,0,0.04) !important;
         }
-        #search-input::placeholder { color: #c0849e !important; }
-       /* 🎌 取码教程按钮 */
+        #search-input::placeholder { color: #8aaa72 !important; }
+
+        /* 🎌 取码教程按钮（保持深蓝不变，作为功能入口区分） */
         .tutorial-btn {
             display: inline-flex;
             align-items: center;
@@ -188,37 +178,35 @@
         }
     </style>
 </head>
-<body class="text-pink-700 min-h-screen flex flex-col selection:bg-pink-200 selection:text-pink-900">
+<body class="text-green-800 min-h-screen flex flex-col selection:bg-green-200 selection:text-green-900">
 
     <!-- 🛡️ 访问验证模态框 -->
-    <div id="accessModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(190,24,93,0.3); z-index:99999; align-items:center; justify-content:center; backdrop-filter:blur(12px);">
-        <div style="background:#fff; border:2px solid #e8a0b4; border-radius:20px; padding:2.5rem; max-width:400px; width:calc(100% - 2rem); box-shadow:0 25px 60px rgba(190,24,93,0.18), inset 0 1px 0 rgba(255,255,255,0.8); animation:modalIn 0.3s ease;">
-        <div style="text-align:center; margin-bottom:1.75rem;">
-    <a id="btn-tutorial" href="#" target="_blank" rel="noopener noreferrer" class="tutorial-btn">
-        📖 取码教程
-    </a>
-</div>
-             <a id="accessLink" href="#" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; width:100%; padding:0.85rem; background:var(--accent-gradient); color:#fff; border-radius:12px; font-weight:600; text-decoration:none; margin-bottom:1.5rem; transition:all 0.2s; box-shadow:0 4px 15px rgba(236, 72, 153, 0.3);">
+    <div id="accessModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(74,124,69,0.25); z-index:99999; align-items:center; justify-content:center; backdrop-filter:blur(12px);">
+        <div style="background:#fff; border:2px solid #c5dfab; border-radius:20px; padding:2.5rem; max-width:400px; width:calc(100% - 2rem); box-shadow:0 25px 60px rgba(74,124,69,0.15), inset 0 1px 0 rgba(255,255,255,0.8); animation:modalIn 0.3s ease;">
+            <div style="text-align:center; margin-bottom:1.75rem;">
+                <a id="btn-tutorial" href="#" target="_blank" rel="noopener noreferrer" class="tutorial-btn">📖 取码教程</a>
+            </div>
+            <a id="accessLink" href="#" target="_blank" rel="noopener noreferrer" style="display:flex; align-items:center; justify-content:center; width:100%; padding:0.85rem; background:var(--accent-gradient); color:#fff; border-radius:12px; font-weight:600; text-decoration:none; margin-bottom:1.5rem; transition:all 0.2s; box-shadow:0 4px 15px rgba(107,158,77,0.3);">
                 <span style="margin-right:0.5rem;">👉</span> 点击获取 <span id="linkDate" style="margin-left:0.25rem;"></span> 访问码
             </a>
-              <input id="accessCodeInput" type="text" placeholder="请输入访问码，不会的看上方教程" maxlength="15" autocomplete="off" style="width:100%; padding:0.85rem 1rem; border:2px solid #e8a0b4; border-radius:12px; font-size:1rem; outline:none; background:#fdf2f8; color:#831843; box-sizing:border-box; transition:all 0.2s;" />
-            <button id="verifyBtn" style="width:100%; padding:0.9rem; background:linear-gradient(135deg, #ec4899, #f472b6); color:#fff; border:none; border-radius:12px; font-size:1rem; font-weight:600; cursor:pointer; margin-top:1rem; transition:all 0.2s; box-shadow:0 4px 15px rgba(236, 72, 153, 0.3);">✅ 验证并进入</button>
-            <div id="errorText" style="color:#be185d; font-size:0.85rem; text-align:center; margin-top:1rem; font-weight:600; display:none;"></div>
+            <input id="accessCodeInput" type="text" placeholder="请输入访问码，不会的看上方教程" maxlength="15" autocomplete="off" style="width:100%; padding:0.85rem 1rem; border:2px solid #c5dfab; border-radius:12px; font-size:1rem; outline:none; background:#f4f7f0; color:#2d4a22; box-sizing:border-box; transition:all 0.2s;" />
+            <button id="verifyBtn" style="width:100%; padding:0.9rem; background:linear-gradient(135deg, #6b9e4d, #8cb868); color:#fff; border:none; border-radius:12px; font-size:1rem; font-weight:600; cursor:pointer; margin-top:1rem; transition:all 0.2s; box-shadow:0 4px 15px rgba(107,158,77,0.3);">✅ 验证并进入</button>
+            <div id="errorText" style="color:#a83232; font-size:0.85rem; text-align:center; margin-top:1rem; font-weight:600; display:none;"></div>
         </div>
     </div>
 
     <!-- ✅ 顶栏 -->
-    <header class="backdrop-blur-xl bg-white/90 border-b border-pink-300/80 px-4 pt-3 pb-2 md:p-4 sticky top-0 z-50 flex flex-col gap-2.5 shadow-md">
+    <header class="backdrop-blur-xl bg-white/90 border-b border-green-300/80 px-4 pt-3 pb-2 md:p-4 sticky top-0 z-50 flex flex-col gap-2.5 shadow-md">
         <div class="flex items-center justify-between w-full">
             <div class="w-16 md:hidden"></div>
-            <h1 id="site-title" class="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-rose-500 text-center flex-1 tracking-tight">资源库</h1>
+            <h1 id="site-title" class="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-green-700 to-emerald-500 text-center flex-1 tracking-tight">资源库</h1>
             <div class="flex gap-2 shrink-0">
                 <a id="btn-announcement" href="#" target="_blank"
-                   class="px-3 py-1 rounded-full bg-pink-100 border border-pink-300 text-xs font-semibold text-pink-700 hover:text-pink-800 hover:bg-pink-200 hover:border-pink-400 transition-all whitespace-nowrap">
+                   class="px-3 py-1 rounded-full bg-green-100 border border-green-300 text-xs font-semibold text-green-800 hover:text-green-900 hover:bg-green-200 hover:border-green-400 transition-all whitespace-nowrap">
                     📢 新人必看
                 </a>
                 <a id="btn-message-board" href="#" target="_blank"
-                   class="px-3 py-1 rounded-full bg-rose-100 border border-rose-300 text-xs font-semibold text-rose-700 hover:text-rose-800 hover:bg-rose-200 hover:border-rose-400 transition-all whitespace-nowrap">
+                   class="px-3 py-1 rounded-full bg-emerald-100 border border-emerald-300 text-xs font-semibold text-emerald-800 hover:text-emerald-900 hover:bg-emerald-200 hover:border-emerald-400 transition-all whitespace-nowrap">
                     💬 留言
                 </a>
             </div>
@@ -226,22 +214,22 @@
 
         <div class="w-full">
             <input type="text" id="search-input" placeholder="🔍 搜索资源名称..."
-                   class="w-full bg-white border border-pink-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-pink-400/40 focus:border-pink-500 text-sm text-pink-800 placeholder-pink-400 transition-all shadow-sm">
+                   class="w-full bg-white border border-green-300 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-green-400/40 focus:border-green-500 text-sm text-green-900 placeholder-green-400 transition-all shadow-sm">
         </div>
 
         <div class="w-full">
             <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1" id="parent-category-bar">
-                <button id="btn-reset-category" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-pink-700 border border-pink-300 hover:bg-pink-100 transition category-active whitespace-nowrap">全部</button>
+                <button id="btn-reset-category" class="shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white text-green-800 border border-green-300 hover:bg-green-100 transition category-active whitespace-nowrap">全部</button>
             </div>
             <div class="flex items-center gap-2 overflow-x-auto no-scrollbar py-1 hidden" id="child-category-bar"></div>
         </div>
 
         <div class="flex items-center justify-between w-full pt-0.5">
-            <div class="flex bg-pink-100 rounded-lg p-0.5 border border-pink-300/80">
-                <button id="sort-date" class="sort-btn px-3 py-1.5 rounded-md text-xs font-semibold bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-sm whitespace-nowrap transition">按时间</button>
+            <div class="flex bg-green-100 rounded-lg p-0.5 border border-green-300/80">
+                <button id="sort-date" class="sort-btn px-3 py-1.5 rounded-md text-xs font-semibold bg-gradient-to-r from-green-600 to-emerald-500 text-white shadow-sm whitespace-nowrap transition">按时间</button>
                 <button id="sort-pinyin" class="sort-btn sort-btn-inactive px-3 py-1.5 rounded-md text-xs whitespace-nowrap transition">按名称</button>
             </div>
-            <span class="text-xs text-pink-600 font-semibold">共 <span id="total-count" class="text-pink-700 font-bold">0</span> 条</span>
+            <span class="text-xs text-green-700 font-semibold">共 <span id="total-count" class="text-green-800 font-bold">0</span> 条</span>
         </div>
     </header>
 
@@ -250,17 +238,17 @@
             <div id="card-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-8"></div>
             <div id="pagination" class="flex justify-center items-center gap-2 mt-8 mb-12"></div>
 
-            <section class="mt-12 border-t border-pink-300/60 pt-8">
-                <h3 class="text-lg font-bold mb-4 text-pink-700 tracking-tight">📊 数据统计</h3>
+            <section class="mt-12 border-t border-green-300/60 pt-8">
+                <h3 class="text-lg font-bold mb-4 text-green-800 tracking-tight">📊 数据统计</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="bg-white p-5 rounded-2xl border border-pink-300 shadow-sm hover:shadow-md hover:border-pink-400 transition">
-                        <div class="text-pink-500 text-xs font-semibold uppercase tracking-wider">今日访问</div>
-                        <div id="stat-today-views" class="text-3xl font-bold text-pink-800 mt-2 tracking-tight">加载中...</div>
+                    <div class="bg-white p-5 rounded-2xl border border-green-300 shadow-sm hover:shadow-md hover:border-green-400 transition">
+                        <div class="text-green-600 text-xs font-semibold uppercase tracking-wider">今日访问</div>
+                        <div id="stat-today-views" class="text-3xl font-bold text-green-900 mt-2 tracking-tight">加载中...</div>
                     </div>
-                    <div class="bg-white p-5 rounded-2xl border border-pink-300 shadow-sm hover:shadow-md hover:border-pink-400 transition md:col-span-2">
-                        <div class="text-pink-500 text-xs font-semibold uppercase tracking-wider">热度排行 TOP 5</div>
-                        <ul id="stat-top-resources" class="text-sm text-pink-700 mt-3 space-y-2">
-                            <li class="text-pink-400">加载中...</li>
+                    <div class="bg-white p-5 rounded-2xl border border-green-300 shadow-sm hover:shadow-md hover:border-green-400 transition md:col-span-2">
+                        <div class="text-green-600 text-xs font-semibold uppercase tracking-wider">热度排行 TOP 5</div>
+                        <ul id="stat-top-resources" class="text-sm text-green-800 mt-3 space-y-2">
+                            <li class="text-green-500">加载中...</li>
                         </ul>
                     </div>
                 </div>
@@ -269,11 +257,11 @@
     </div>
 
     <!-- 详情弹窗 -->
-    <div id="modal" class="fixed inset-0 bg-pink-900/30 backdrop-blur-md hidden z-[100] flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-pink-300 overflow-hidden transform transition-all">
-            <div class="p-6 border-b border-pink-200 flex justify-between items-start bg-gradient-to-r from-pink-50 to-rose-50">
-                <h2 id="modal-title" class="text-xl font-bold text-pink-800 pr-4 tracking-tight"></h2>
-                <button id="modal-close" class="text-pink-400 hover:text-pink-600 text-2xl leading-none transition">&times;</button>
+    <div id="modal" class="fixed inset-0 bg-green-900/30 backdrop-blur-md hidden z-[100] flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-lg rounded-2xl shadow-2xl border border-green-300 overflow-hidden transform transition-all">
+            <div class="p-6 border-b border-green-200 flex justify-between items-start bg-gradient-to-r from-green-50 to-emerald-50">
+                <h2 id="modal-title" class="text-xl font-bold text-green-900 pr-4 tracking-tight"></h2>
+                <button id="modal-close" class="text-green-400 hover:text-green-600 text-2xl leading-none transition">&times;</button>
             </div>
             <div class="p-6">
                 <div id="modal-meta" class="flex flex-wrap gap-2 mb-4 text-xs"></div>
@@ -282,7 +270,6 @@
         </div>
     </div>
 
-    <!-- ✅ 工具函数必须最先加载，供 app.js 和 verify.js 共用 -->
     <script src="utils.js"></script>
     <script src="app.js"></script>
     <script src="verify.js"></script>
