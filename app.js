@@ -1,3 +1,14 @@
+// 统一统计请求，自动带 X-Site-Host，后续调用完全无感
+async function statsFetch(path, options = {}) {
+  const url = `${config.statsApiUrl}${path}`;
+  const headers = {
+    'X-Site-Host': window.location.hostname,
+    ...(options.headers || {})
+  };
+  
+  return fetch(url, { ...options, headers });
+}
+
 // ================= 状态管理 =================
 const AppState = {
     allData: [],
