@@ -484,3 +484,9 @@ function bindEvents() {
         if (e.target.id === 'modal') document.getElementById('modal').classList.add('hidden');
     };
 }
+
+// 在 app.js 中补充这个函数
+function getBeijingDate() {
+  const now = new Date(Date.now() + 8 * 3600000);
+  return now.toISOString().split('T')[0];
+}
