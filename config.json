@@ -6,12 +6,11 @@
   "pageSize": 40,
   "statsApiUrl": "https://stats.261512.xyz",
   "dataFiles": [
-    "/data/yali0919.json",
-    "/data/shuku10825.json"
+    "/data/duanju.json"
   ],
   "categoryTree": {
-    "日更单话": {
-      "children": ["日更单话"]
+    "短剧": {
+      "children": ["欧美AI短剧", "欧美真人短剧"]
     },
     "完结漫": {
       "children": ["完结漫", "完结漫（台版）", "完结漫（台有）", "完结漫（台无）", "完结漫（汉化）"]
